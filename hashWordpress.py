@@ -28,7 +28,7 @@ Por ejemplo: ITOA64[14] = 'C', ITOA64[10] = 'A', etc...
 """
 
 import random
-import hashlib
+import hashlib  # MD5 es un algoritmo que convierte texto en un hash de 128 bits (16 bytes)
 
 # Lista de caracteres especiales que WordPress usa para crear los hashes
 # Es como un alfabeto personalizado con 64 caracteres diferentes
@@ -122,10 +122,14 @@ def phpass_hash(password, iteration_log2=14):
     count = 1 << iteration_log2
     
     # Primer paso: mezclar el salt con la contraseña y crear el hash inicial
+    # MD5 convierte los datos en un hash de 16 bytes que parece aleatorio
+    # Usamos .digest() para obtener los bytes crudos (no el texto hexadecimal)
     hash_val = hashlib.md5(salt.encode('utf-8') + password_bytes).digest()
 
     # Repetir el proceso muchas veces para hacer el hash más difícil de romper
     # Con iteration_log2=14, esto se repite 16,384 veces
+    # Cada vez que se ejecuta MD5, toma el hash anterior y lo vuelve a hashear
+    # Esto hace que aunque MD5 sea rápido, el proceso total sea muy lento (más seguro)
     for _ in range(count):
         hash_val = hashlib.md5(hash_val + password_bytes).digest()
 
