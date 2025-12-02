@@ -16,13 +16,14 @@ Un **hash** es como una versión encriptada de una contraseña que **no se puede
 
 El programa genera un hash de **34 caracteres** con la siguiente estructura:
 
+(los espacios mostrados son solo para la claridad)
 ```
-$P$CjF.jd1bB6t9fxwFbhNgIZhp0RozS1/
-└┬┘└┬┘└──┬───┘└────────┬──────────┘
- │  │    │             └─ Hash codificado (22 caracteres)
- │  │    └─────────────── Salt aleatorio (8 caracteres)
- │  └──────────────────── Carácter de iteración (1 carácter)
- └─────────────────────── Prefijo PHPass (3 caracteres)
+ $P$  C  jF.jd1bB  6t9fxwFbhNgIZhp0RozS1/
+└─┬─┘└┬┘└──┬─────┘└───────────┬──────────┘
+  │   │    │                  └─ Hash codificado (22 caracteres)
+  │   │    └─────────────── Salt aleatorio (8 caracteres)
+  │   └──────────────────── Carácter de iteración (1 carácter)
+  └─────────────────────── Prefijo PHPass (3 caracteres)
 ```
 
 ### Componentes del Hash:
