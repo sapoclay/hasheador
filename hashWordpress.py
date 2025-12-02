@@ -4,9 +4,10 @@ Un hash es como una versión encriptada de una contraseña que no se puede rever
 
 ESTRUCTURA DEL HASH GENERADO (34 caracteres en total):
 
+(los espacios mostrados son solo para la claridad)
 
-$P$CjF.jd1bB6t9fxwFbhNgIZhp0RozS1/
-└┬┘└┬┘└──┬───┘└────────┬──────────┘
+$P$ C  jF.jd1bB  6t9fxwFbhNgIZhp0RozS1/
+└┬┘└┬┘└──┬─────┘└────────┬─────────────┘
  │  │    │             └─ 22 caracteres del hash
  │  │    └─────────────── 8 caracteres del salt
  │  └──────────────────── 'C' = nivel 14 = 16,384 repeticiones
@@ -23,7 +24,7 @@ Ejemplos de conversión del número al carácter:
   - iteration_log2 = 20 → carácter 'K'  → se repite 2^20 = 1,048,576 veces
 
 El carácter se obtiene del alfabeto ITOA64 en la posición del número.
-Por ejemplo: ITOA64[14] = 'C', ITOA64[10] = 'A', etc.
+Por ejemplo: ITOA64[14] = 'C', ITOA64[10] = 'A', etc...
 """
 
 import random
@@ -98,7 +99,7 @@ def encode64(input_bytes, count):
 def phpass_hash(password, iteration_log2=14):
     """
     Convierte una contraseña en un hash de WordPress listo para guardarlo en la base de datos qdpm (que es lo que nos ocupa)
-       
+
     Parámetros:
         password: la contraseña que queremos convertir en hash
         iteration_log2: número que controla cuántas veces se repite el proceso (entre 7 y 30) Más alto es más seguro pero más lento (14 me parece que es el estándar de WordPress)
