@@ -98,19 +98,7 @@ def encode64(input_bytes, count):
 def phpass_hash(password, iteration_log2=14):
     """
     Convierte una contraseña en un hash de WordPress listo para guardarlo en la base de datos qdpm (que es lo que nos ocupa)
-    
-    ESTRUCTURA DEL HASH RESULTANTE (34 caracteres totales):
-    ┌──────────────────────────────────────────────────────────────────────┐
-    │ Posición │ Contenido        │ Longitud │ Ejemplo                     │
-    ├──────────┼──────────────────┼──────────┼─────────────────────────────┤
-    │ 1-3      │ Prefijo "$P$"    │ 3        │ $P$                         │
-    │ 4        │ Iteración        │ 1        │ C (significa nivel 14)      │
-    │ 5-12     │ Salt aleatorio   │ 8        │ jF.jd1bB                    │
-    │ 13-34    │ Hash codificado  │ 22       │ 6t9fxwFbhNgIZhp0RozS1/      │
-    └──────────┴──────────────────┴──────────┴─────────────────────────────┘
-    
-    TOTAL: 3 + 1 + 8 + 22 = 34 caracteres
-    
+       
     Parámetros:
         password: la contraseña que queremos convertir en hash
         iteration_log2: número que controla cuántas veces se repite el proceso (entre 7 y 30) Más alto es más seguro pero más lento (14 me parece que es el estándar de WordPress)
