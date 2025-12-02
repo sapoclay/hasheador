@@ -128,7 +128,7 @@ def phpass_hash(password, iteration_log2=14):
     salt = get_random_salt(8)
     setting = f'$P${ITOA64[iteration_log2]}{salt}'
 
-    # Convertir la contraseña a formato binario una sola vez (más eficiente)
+    # Convertir la contraseña a formato binario una sola vez
     password_bytes = password.encode('utf-8')
     count = 1 << iteration_log2
     
